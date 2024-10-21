@@ -21,6 +21,10 @@ export class AuthService {
     this.loadTokensFromStorage();
   }
 
+  getAccessToken(): string | null {
+    return this._token || localStorage.getItem('access_token');
+  }
+
   login(username: string, password: string): Observable<TokenResponse> {
     const body = new URLSearchParams();
     body.set('grant_type', 'password');

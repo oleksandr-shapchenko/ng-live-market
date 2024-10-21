@@ -16,6 +16,10 @@ import { environment } from '../environments/environment.dev';
 export class AppComponent {
   private auth = inject(AuthService);
 
+  constructor() {
+    this.login();
+  }
+
   login() {
     this.auth.login(environment.username, environment.password).subscribe();
   }

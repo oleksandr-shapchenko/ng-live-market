@@ -1,0 +1,8 @@
+<div class="search-panel">
+  <app-select-asset-dynamic />
+  <button mat-raised-button>Subscribe</button>
+</div>
+
+<app-asset-live-data />
+
+<app-assets-chart [countBackBars]="(countBackBars$ | async)!" />

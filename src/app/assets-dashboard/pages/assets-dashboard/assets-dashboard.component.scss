@@ -1,0 +1,18 @@
+:host {
+  $padding: 20px;
+
+  width: calc(100dvw - $padding * 2);
+  display: block;
+  padding: $padding;
+}
+
+.search-panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+
+  button {
+    margin-bottom: 20px;
+  }
+}

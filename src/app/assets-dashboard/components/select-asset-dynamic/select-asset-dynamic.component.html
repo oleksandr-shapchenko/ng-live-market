@@ -1,0 +1,16 @@
+<mat-form-field>
+  <mat-select [formControl]="assetCtrl" placeholder="Asset">
+    <mat-option>
+      <ngx-mat-select-search
+        [formControl]="assetFilteringCtrl"
+        [searching]="isSearching"
+        [clearSearchInput]="false"
+        placeholderLabel="Search assets"
+        noEntriesFoundLabel="No matching assets found"
+      />
+    </mat-option>
+    <mat-option *ngFor="let asset of filteredAssets | async" [value]="asset">
+      {{asset.symbol}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
