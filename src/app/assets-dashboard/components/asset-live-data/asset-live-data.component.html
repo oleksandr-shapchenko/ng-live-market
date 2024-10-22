@@ -1,1 +1,14 @@
-<p>asset-live-data works!</p>
+<div>
+  <span>Symbol:</span>
+  <span>{{ symbol() }}</span>
+</div>
+
+<div>
+  <span>Price:</span>
+  <span>{{ liveData()?.price }}</span>
+</div>
+
+<div>
+  <span>Time:</span>
+  <span>{{ liveData()?.timestamp | date: 'HH:mm:ss' }}</span>
+</div>

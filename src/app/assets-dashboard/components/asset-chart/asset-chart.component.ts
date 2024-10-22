@@ -12,7 +12,7 @@ import { CountBackBar } from '../../../core/services/fintacharts-api/models/coun
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AssetChartComponent {
-  countBackBars = input<CountBackBar[]>([]);
+  countBackBars = input<CountBackBar[] | null>([]);
 
   chartOptions = computed(
     (): Highcharts.Options => ({
@@ -41,7 +41,7 @@ export class AssetChartComponent {
         {
           type: 'candlestick',
           name: 'Historical Price',
-          data: this.countBackBars().map(bar => [Date.parse(bar.t), bar.o, bar.h, bar.l, bar.c]),
+          data: this.countBackBars()?.map(bar => [Date.parse(bar.t), bar.o, bar.h, bar.l, bar.c]) || [],
           tooltip: {
             valueDecimals: 5,
           },

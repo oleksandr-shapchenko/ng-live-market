@@ -34,6 +34,7 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      "@angular-eslint/template/no-negated-async": "off",
       "prettier/prettier": [
         "error",
         {

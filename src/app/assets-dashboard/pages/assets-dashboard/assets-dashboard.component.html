@@ -1,8 +1,17 @@
 <div class="search-panel">
   <app-select-asset-dynamic />
-  <button mat-raised-button>Subscribe</button>
+  <button
+    mat-raised-button
+    [disabled]="!selectedAsset"
+    (click)="subscribeToLiveData(selectedAsset!.id)"
+  >
+    Subscribe
+  </button>
 </div>
 
-<app-asset-live-data />
+<app-asset-live-data
+  [liveData]="assetLiveData$ | async"
+  [symbol]="selectedAsset?.symbol"
+/>
 
-<app-assets-chart [countBackBars]="(countBackBars$ | async)!" />
+<app-assets-chart [countBackBars]="countBackBars$ | async" />

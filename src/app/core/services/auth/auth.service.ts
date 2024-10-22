@@ -10,7 +10,7 @@ import { TokenResponse } from './models/token-response.interface';
 export class AuthService {
   static readonly LOGIN_URL = `/identity/realms/fintatech/protocol/openid-connect/token`;
 
-  private http = inject(HttpClient);
+  private _http = inject(HttpClient);
 
   private _token: string | null = null;
   private _refreshToken: string | null = null;
@@ -36,7 +36,7 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded',
     });
 
-    return this.http
+    return this._http
       .post<TokenResponse>(AuthService.LOGIN_URL, body.toString(), { headers })
       .pipe(tap(res => this.handleTokenResponse(res)));
   }
@@ -66,7 +66,7 @@ export class AuthService {
       refresh_token: this._refreshToken,
     };
 
-    return this.http.post<TokenResponse>(AuthService.LOGIN_URL, body).pipe(
+    return this._http.post<TokenResponse>(AuthService.LOGIN_URL, body).pipe(
       tap(res => this.handleTokenResponse(res)),
       map(res => res.access_token)
     );

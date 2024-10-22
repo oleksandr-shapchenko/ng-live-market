@@ -10,12 +10,12 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root',
 })
 export class FintachartsApiService {
-  private http = inject(HttpClient);
-  private auth = inject(AuthService);
+  private _http = inject(HttpClient);
+  private _auth = inject(AuthService);
 
   private getHeaders() {
     return {
-      Authorization: `Bearer ${this.auth.getAccessToken()}`,
+      Authorization: `Bearer ${this._auth.getAccessToken()}`,
     };
   }
 
@@ -28,7 +28,7 @@ export class FintachartsApiService {
       .set('page', page.toString())
       .set('size', size.toString());
 
-    return this.http.get<GetAssetsResponse>(url, { params, headers: this.getHeaders() });
+    return this._http.get<GetAssetsResponse>(url, { params, headers: this.getHeaders() });
   }
 
   getCountBackBars(
@@ -46,6 +46,6 @@ export class FintachartsApiService {
       .set('periodicity', periodicity)
       .set('barsCount', barsCount.toString());
 
-    return this.http.get<GetCountBackBarsResponse>(url, { params, headers: this.getHeaders() });
+    return this._http.get<GetCountBackBarsResponse>(url, { params, headers: this.getHeaders() });
   }
 }
